@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'vim-airline/vim-airline'
@@ -92,3 +93,5 @@ augroup javascript_folding
 augroup END
 
 let g:syntastic_mode_map = { 'passive_filetypes': ['javascript'] }
+
+set diffopt+=vertical
