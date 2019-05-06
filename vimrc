@@ -28,6 +28,7 @@ Plugin 'moll/vim-node'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ternjs/tern_for_vim', { 'do' : 'npm install' }
 Plugin 'ervandew/supertab'
+Plugin 'darthmall/vim-vue'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -88,10 +89,15 @@ let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
 
 augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax nofoldenable
+  au!
+  au FileType javascript setlocal foldmethod=syntax nofoldenable
 augroup END
 
 let g:syntastic_mode_map = { 'passive_filetypes': ['javascript'] }
 
 set diffopt+=vertical
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)

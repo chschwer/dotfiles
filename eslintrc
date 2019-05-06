@@ -3,6 +3,13 @@
     "node": true,
     "es6": true
   },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
   "rules": {
     "array-bracket-spacing": [2, "never"],
     "block-scoped-var": 2,
