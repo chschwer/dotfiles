@@ -96,8 +96,15 @@ augroup END
 let g:syntastic_mode_map = { 'passive_filetypes': ['javascript'] }
 
 set diffopt+=vertical
-
+" Enable completion where available.
+" This setting must be set before ALE is loaded.
+"
+" You should not turn this setting on if you wish to use ALE as a completion
+" source for other completion plugins, like Deoplete.
+" let g:ale_completion_enabled = 1
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-i> <Plug>(ale_go_to_definition)
+let g:ale_lint_on_text_changed = "never"
