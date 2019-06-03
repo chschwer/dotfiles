@@ -73,6 +73,12 @@ let g:syntastic_javascript_checkers = ['eslint']
 " Ü zurück
 nnoremap ü <C-]>
 nnoremap Ü <C-O>
+nnoremap ö [
+nnoremap ä ]
+nnoremap Ö {
+nnoremap Ä }
+nnoremap ß ^
+
 
 " Einstellungen für hdevtools
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
