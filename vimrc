@@ -13,22 +13,26 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
+
 Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-Plugin 'vim-syntastic/syntastic'
 Plugin 'bitc/vim-hdevtools'
 Plugin 'Twinside/vim-hoogle'
+
 Plugin 'editorconfig/editorconfig-vim'
+
 Plugin 'w0rp/ale'
+
 Plugin 'moll/vim-node'
 
 Plugin 'pangloss/vim-javascript'
-Plugin 'ternjs/tern_for_vim', { 'do' : 'npm install' }
-Plugin 'ervandew/supertab'
-Plugin 'darthmall/vim-vue'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'ycm-core/YouCompleteMe'
+
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -55,41 +59,26 @@ if has("gui_running")
 endif
 
 set tabstop=2 shiftwidth=2 expandtab
+set completeopt=menuone,preview
+set omnifunc=syntaxcomplete#Complete
+set diffopt+=vertical
 
-" Einstellungen für syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-
-" Navigation in Hilfe
-" ü vorwärts
-" Ü zurück
-nnoremap ü <C-]>
-nnoremap Ü <C-O>
-nnoremap ö [
-nnoremap ä ]
-nnoremap Ö {
+" German special keys
+nnoremap ü `
+vnoremap ü `
+noremap <c-ö> <c-]>
+nnoremap ä {
+vnoremap ä {
 nnoremap Ä }
+vnoremap Ä }
 nnoremap ß ^
-
+vnoremap ß ^
 
 " Einstellungen für hdevtools
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 
-let g:SuperTabContextDefaultCompletionType = "<C-X><C-O>"
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabClosePreviewOnPopupClose = 1
-
-set omnifunc=syntaxcomplete#Complete
-
+" Javascript
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
@@ -99,18 +88,17 @@ augroup javascript_folding
   au FileType javascript setlocal foldmethod=syntax nofoldenable
 augroup END
 
-let g:syntastic_mode_map = { 'passive_filetypes': ['javascript'] }
-
-set diffopt+=vertical
-" Enable completion where available.
-" This setting must be set before ALE is loaded.
-"
-" You should not turn this setting on if you wish to use ALE as a completion
-" source for other completion plugins, like Deoplete.
-" let g:ale_completion_enabled = 1
-" Set this. Airline will handle the rest.
+" ALE
 let g:airline#extensions#ale#enabled = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-i> <Plug>(ale_go_to_definition)
 let g:ale_lint_on_text_changed = "never"
+
+let g:ale_linters = {
+\   'tex': [],
+\   'java': [],
+\   'javascript': ['eslint', 'tsserver'],
+\}
+
+set guifont=DejaVu\ Sans\ Mono\ 12
