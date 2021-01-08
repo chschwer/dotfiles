@@ -1,13 +1,11 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
 
-" set the runtime path to include Vundle and initialize
+" Vundle
+filetype off
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'
@@ -34,19 +32,8 @@ Plugin 'ycm-core/YouCompleteMe'
 
 Plugin 'majutsushi/tagbar'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call vundle#end()
+filetype plugin indent on
 syntax enable
 
 colorscheme solarized
@@ -66,7 +53,7 @@ set diffopt+=vertical
 " German special keys
 nnoremap ü `
 vnoremap ü `
-noremap <c-ö> <c-]>
+nnoremap <buffer> <c-ö> <c-]>
 nnoremap ä {
 vnoremap ä {
 nnoremap Ä }
