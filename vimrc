@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-projectionist'
 
 Plugin 'altercation/vim-colors-solarized'
 
@@ -31,6 +32,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'ycm-core/YouCompleteMe'
 
 Plugin 'majutsushi/tagbar'
+Plugin 'hdiniz/vim-gradle'
 
 call vundle#end()
 filetype plugin indent on
@@ -66,6 +68,9 @@ au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 
 " Javascript
+let g:ycm_auto_hover=''
+nmap <leader>D <plug>(YCMHover)
+
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 let g:javascript_plugin_flow = 1
@@ -74,12 +79,12 @@ augroup javascript_folding
   au!
   au FileType javascript setlocal foldmethod=syntax nofoldenable
 augroup END
-
+nmap <leader>D <plug>(YCMHover)
 " ALE
 let g:airline#extensions#ale#enabled = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nmap <silent> <C-i> <Plug>(ale_go_to_definition)
+nmap <silent> <leader>k <Plug>(ale_previous_wrap)
+nmap <silent> <leader>j <Plug>(ale_next_wrap)
+nmap <silent> <leader>i <Plug>(ale_go_to_definition)
 let g:ale_lint_on_text_changed = "never"
 
 let g:ale_linters = {
