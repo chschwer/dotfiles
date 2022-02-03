@@ -11,46 +11,22 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-projectionist'
 
 Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-Plugin 'bitc/vim-hdevtools'
-Plugin 'Twinside/vim-hoogle'
-
 Plugin 'editorconfig/editorconfig-vim'
 
-Plugin 'w0rp/ale'
-
-Plugin 'moll/vim-node'
-
-Plugin 'pangloss/vim-javascript'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'ycm-core/YouCompleteMe'
-
-Plugin 'majutsushi/tagbar'
-Plugin 'hdiniz/vim-gradle'
+Plugin 'python-mode/python-mode'
 
 call vundle#end()
 filetype plugin indent on
 syntax enable
 
-colorscheme solarized
-set background=light
-
 set number
-set columns=100
-if has("gui_running")
-  set lines=48
-endif
-
 set tabstop=2 shiftwidth=2 expandtab
-set completeopt=menuone,preview
-set omnifunc=syntaxcomplete#Complete
-set diffopt+=vertical
 
 " German special keys
 nnoremap ü `
@@ -63,34 +39,30 @@ vnoremap Ä }
 nnoremap ß ^
 vnoremap ß ^
 
-" Einstellungen für hdevtools
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+" Appearance
+colorscheme solarized
+set background=light
 
-" Javascript
-let g:ycm_auto_hover=''
-nmap <leader>D <plug>(YCMHover)
-
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow = 1
-
-augroup javascript_folding
-  au!
-  au FileType javascript setlocal foldmethod=syntax nofoldenable
-augroup END
-nmap <leader>D <plug>(YCMHover)
-" ALE
-let g:airline#extensions#ale#enabled = 1
-nmap <silent> <leader>k <Plug>(ale_previous_wrap)
-nmap <silent> <leader>j <Plug>(ale_next_wrap)
-nmap <silent> <leader>i <Plug>(ale_go_to_definition)
-let g:ale_lint_on_text_changed = "never"
-
-let g:ale_linters = {
-\   'tex': [],
-\   'java': [],
-\   'javascript': ['eslint', 'tsserver'],
-\}
+set columns=100
+if has("gui_running")
+  set lines=48
+endif
 
 set guifont=DejaVu\ Sans\ Mono\ 12
+
+"
+"The following mappings simplify navigation when viewing help:
+"
+"* Press Enter to jump to the subject (topic) under the cursor.
+"* Press Backspace to return from the last jump.
+"* Press s to find the next subject, or S to find the previous subject.
+"* Press o to find the next option, or O to find the previous option.
+"
+" Source: https://vim.fandom.com/wiki/Learn_to_use_help
+"
+autocmd FileType help nnoremap <buffer> <CR> <C-]>
+autocmd FileType help nnoremap <buffer> <BS> <C-T>
+autocmd FileType help nnoremap <buffer> o /'\l\{2,\}'<CR>
+autocmd FileType help nnoremap <buffer> O ?'\l\{2,\}'<CR>
+autocmd FileType help nnoremap <buffer> s /\|\zs\S\+\ze\|<CR>
+autocmd FileType help nnoremap <buffer> S ?\|\zs\S\+\ze\|<CR>
