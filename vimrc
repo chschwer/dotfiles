@@ -22,6 +22,8 @@ Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'python-mode/python-mode'
 
+Plugin 'preservim/tagbar'
+Plugin 'vim-test/vim-test'
 Plugin 'tmhedberg/SimpylFold'
 
 call vundle#end()
@@ -30,6 +32,7 @@ syntax enable
 
 set number
 set tabstop=2 shiftwidth=2 expandtab
+
 
 " German special keys
 nnoremap ü `
