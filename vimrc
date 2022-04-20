@@ -67,3 +67,10 @@ autocmd FileType help nnoremap <buffer> o /'\l\{2,\}'<CR>
 autocmd FileType help nnoremap <buffer> O ?'\l\{2,\}'<CR>
 autocmd FileType help nnoremap <buffer> s /\|\zs\S\+\ze\|<CR>
 autocmd FileType help nnoremap <buffer> S ?\|\zs\S\+\ze\|<CR>
+
+" Python specifics
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 expandtab
+let g:pymode_rope=1
+let g:pymode_completion=1
+let g:pymode_rope_complete_on_dot=0
+autocmd CompleteDone * pclose
