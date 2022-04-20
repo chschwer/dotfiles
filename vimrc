@@ -22,6 +22,8 @@ Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'python-mode/python-mode'
 
+Plugin 'tmhedberg/SimpylFold'
+
 call vundle#end()
 filetype plugin indent on
 syntax enable
@@ -39,6 +41,8 @@ nnoremap Ä }
 vnoremap Ä }
 nnoremap ß ^
 vnoremap ß ^
+
+let g:SimpylFold_docstring_preview = 1
 
 " Appearance
 colorscheme solarized
