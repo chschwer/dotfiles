@@ -1,3 +1,5 @@
 [user]
 	email = 45539899+chschwer@users.noreply.github.com
 	name = chschwer
+[init]
+	defaultBranch = main
